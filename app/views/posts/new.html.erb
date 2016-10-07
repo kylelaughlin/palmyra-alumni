@@ -1,16 +1,3 @@
 <h1>New Post</h1>
 
-<%= form_for @post do |f| %>
-  <div class="form-group">
-    <%= f.label :title, "Post Title" %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :content, "Post Content" %>
-    <%= f.text_area :content %>
-  </div>
-
-  <%= f.submit %>
-
-<% end %>
+<%= render "form", post: @post %>

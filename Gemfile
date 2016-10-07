@@ -19,7 +19,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Devise for user authentication. Read more: https://github.com/plataformatec/devise
 gem 'devise'
-
+# ckeditor to allow users to create blog posts. Read more: https://github.com/galetahub/ckeditor
+gem "ckeditor"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
