@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_classmate!
+
   def new
     @post = Post.new
   end
