@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 # ckeditor to allow users to create blog posts. Read more: https://github.com/galetahub/ckeditor
 gem "ckeditor"
+# paper clip for file uploading. Read more: https://github.com/thoughtbot/paperclip
+gem "paperclip"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
