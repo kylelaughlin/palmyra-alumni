@@ -23,6 +23,8 @@ gem 'devise'
 gem "ckeditor"
 # paper clip for file uploading. Read more: https://github.com/thoughtbot/paperclip
 gem "paperclip"
+# pundit for user authorization. Read more: https://github.com/elabs/pundit
+gem "pundit"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
