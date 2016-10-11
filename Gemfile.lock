@@ -42,9 +42,6 @@ GEM
     bcrypt (3.1.11)
     builder (3.2.2)
     byebug (9.0.6)
-    ckeditor (4.2.0)
-      cocaine
-      orm_adapter (~> 0.5.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -176,7 +173,6 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  ckeditor
   devise
   jbuilder (~> 2.5)
   jquery-rails
