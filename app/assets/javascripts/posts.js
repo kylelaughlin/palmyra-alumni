@@ -30,13 +30,14 @@
     xhr.onload = function() {
       var href, url;
       url = href = JSON.parse(this.responseText).url;
-      alert(url);
       return attachment.setAttributes({
         url: url,
         href: href
       });
     };
     return xhr.send(form);
+
+
   };
 
   createStorageKey = function(file) {

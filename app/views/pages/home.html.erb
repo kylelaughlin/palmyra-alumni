@@ -3,6 +3,7 @@
 <%= link_to "Logout", destroy_classmate_session_path, method: :delete %>
 <% @posts.each do |post| %>
   <h3><%= post.title %></h3>
-  <p><%= post.content.html_safe %></p>
+  <p>By: <%=post.classmate.email%> On: <%= post.created_at.strftime("%m/%d/%y")%></p>
+  <p><%= truncate(post.content,length: 400, :escape => false) %></p>
   <%=link_to "Edit Post", edit_post_path(post) %>
 <% end %>
