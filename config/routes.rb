@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
   devise_for :classmates
   resources :posts
   root to: "pages#home", as: "home"
