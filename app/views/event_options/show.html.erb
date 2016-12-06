@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event_option.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @event_option.price %>
+</p>
+
+<%= link_to 'Edit', edit_event_option_path(@event_option) %> |
+<%= link_to 'Back', event_options_path %>

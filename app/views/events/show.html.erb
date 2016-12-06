@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @event.date %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @event.content.html_safe %>
+</p>
+
+<h4>Food Options</h4>
+<%= @event.event_options.each do |option| %>
+  <div>
+    <p>Desction: <%= option.description %></p>
+    <p>Price: <%= money(option.price) %></p>
+  </div>
+<% end %>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

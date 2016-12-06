@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Classmate:</strong>
+  <%= @rsvp.classmate_id %>
+</p>
+
+<p>
+  <strong>Total cost:</strong>
+  <%= @rsvp.total_cost %>
+</p>
+
+<p>
+  <strong>Payment status:</strong>
+  <%= @rsvp.payment_status %>
+</p>
+
+<%= link_to 'Edit', edit_rsvp_path(@rsvp) %> |
+<%= link_to 'Back', rsvps_path %>

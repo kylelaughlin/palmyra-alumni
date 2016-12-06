@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011192046) do
+ActiveRecord::Schema.define(version: 20161205012901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendees", force: :cascade do |t|
+    t.integer  "rsvp_id"
+    t.string   "name"
+    t.integer  "event_option"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "ckeditor_assets", force: :cascade do |t|
     t.string   "data_file_name",               null: false
@@ -48,6 +56,22 @@ ActiveRecord::Schema.define(version: 20161011192046) do
     t.index ["reset_password_token"], name: "index_classmates_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "event_options", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "event_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.date     "date"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "images", force: :cascade do |t|
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
@@ -63,6 +87,14 @@ ActiveRecord::Schema.define(version: 20161011192046) do
     t.integer  "classmate_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "rsvps", force: :cascade do |t|
+    t.integer  "classmate_id"
+    t.integer  "total_cost"
+    t.string   "payment_status"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end
