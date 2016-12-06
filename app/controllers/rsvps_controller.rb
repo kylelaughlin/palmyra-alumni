@@ -15,6 +15,7 @@ class RsvpsController < ApplicationController
   # GET /rsvps/new
   def new
     @rsvp = Rsvp.new
+    @event = Event.find(params[:event_id])
   end
 
   # GET /rsvps/1/edit
@@ -65,6 +66,7 @@ class RsvpsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_rsvp
       @rsvp = Rsvp.find(params[:id])
+      @event = Event.find(params[:event_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

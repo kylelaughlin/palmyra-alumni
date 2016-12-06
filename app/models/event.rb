@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
 
-  has_many :event_options
+  has_many :event_options, inverse_of: :event
   has_many :rsvps
 
   validates :name, presence: true

@@ -12,16 +12,20 @@
 
 <p>
   <strong>Content:</strong>
-  <%= @event.content.html_safe %>
+  <%= simple_format(@event.content) %>
 </p>
 
 <h4>Food Options</h4>
-<%= @event.event_options.each do |option| %>
+<% @event.event_options.each do |option| %>
   <div>
-    <p>Desction: <%= option.description %></p>
+    <p>Description: <%= option.name %></p>
     <p>Price: <%= money(option.price) %></p>
   </div>
 <% end %>
+
+<div>
+  <%= link_to 'RSVP', new_event_rsvp_path(@event) %>
+</div>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

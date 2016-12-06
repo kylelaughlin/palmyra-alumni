@@ -23,8 +23,8 @@
 
 
   <div class="form-group">
-    <%= f.hidden_field :content, value: @event.content %>
-    <trix-editor input="post_content" class="trix-content"></trix-editor>
+    <%= f.label :content, "Event Description" %>
+    <%= f.text_area :content, class: "form-control", size: "100x15" %>
   </div>
 
   <h3>Event Food Options</h3>
