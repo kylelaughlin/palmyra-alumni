@@ -7,4 +7,5 @@ class Attendee < ApplicationRecord
   validates :option_id, presence: true
   validates :rsvp_id, presence:true
 
+
 end

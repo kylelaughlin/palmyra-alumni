@@ -16,6 +16,9 @@ class RsvpsController < ApplicationController
   def new
     @rsvp = Rsvp.new
     @event = Event.find(params[:event_id])
+    @classmate_attendee = @rsvp.attendees.build(name: "Kyle")
+    8.times { @rsvp.attendees.build }
+    @event_options = @event.event_options
   end
 
   # GET /rsvps/1/edit
@@ -71,6 +74,6 @@ class RsvpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rsvp_params
-      params.require(:rsvp).permit(:classmate_id, :total_cost, :payment_status)
+      params.require(:rsvp).permit(:classmate_id, :total_cost, :payment_status, attendee_options_attributes: [:name, :event_option_id])
     end
 end
