@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :classmate_id, value: "#{current_classmate.id}" %>
   <!-- <div class="field">
     <%= f.label :classmate_id %>
     <%= f.number_field :classmate_id %>
@@ -33,7 +34,7 @@
     </div>
     <div class="form-group">
       <%= ff.label :event_option_id, "Options" %>
-
+      <%= ff.collection_select(:event_option_id, @event.event_options, :id, :name_with_price, prompt: true) %>
     </div>
   <% end %>
 

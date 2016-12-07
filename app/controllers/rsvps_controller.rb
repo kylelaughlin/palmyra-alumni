@@ -5,6 +5,7 @@ class RsvpsController < ApplicationController
   # GET /rsvps.json
   def index
     @rsvps = Rsvp.all
+    @event = Event.find(params[:event_id])
   end
 
   # GET /rsvps/1
@@ -17,8 +18,7 @@ class RsvpsController < ApplicationController
     @rsvp = Rsvp.new
     @event = Event.find(params[:event_id])
     @classmate_attendee = @rsvp.attendees.build(name: "Kyle")
-    8.times { @rsvp.attendees.build }
-    @event_options = @event.event_options
+    7.times { @rsvp.attendees.build }
   end
 
   # GET /rsvps/1/edit
@@ -29,10 +29,11 @@ class RsvpsController < ApplicationController
   # POST /rsvps.json
   def create
     @rsvp = Rsvp.new(rsvp_params)
+    @event = Event.find(params[:event_id])
 
     respond_to do |format|
       if @rsvp.save
-        format.html { redirect_to @rsvp, notice: 'Rsvp was successfully created.' }
+        format.html { redirect_to event_rsvp_path(@event, @rsvp), notice: 'Rsvp was successfully created.' }
         format.json { render :show, status: :created, location: @rsvp }
       else
         format.html { render :new }
@@ -74,6 +75,6 @@ class RsvpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rsvp_params
-      params.require(:rsvp).permit(:classmate_id, :total_cost, :payment_status, attendee_options_attributes: [:name, :event_option_id])
+      params.require(:rsvp).permit(:classmate_id, :total_cost, :payment_status, attendees_attributes: [:name, :event_option_id, :rsvp_id])
     end
 end
