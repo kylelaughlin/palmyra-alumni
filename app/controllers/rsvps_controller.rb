@@ -11,6 +11,7 @@ class RsvpsController < ApplicationController
   # GET /rsvps/1
   # GET /rsvps/1.json
   def show
+
   end
 
   # GET /rsvps/new
@@ -69,7 +70,7 @@ class RsvpsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_rsvp
-      @rsvp = Rsvp.find(params[:id])
+      @rsvp = Rsvp.includes(attendees: :event_option).find(params[:id])
       @event = Event.find(params[:event_id])
     end
 

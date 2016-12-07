@@ -1,19 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Classmate:</strong>
-  <%= @rsvp.classmate_id %>
-</p>
+<h1>RSVP for: <%= @event.name %></h1>
+<h4>Date: <%= @event.date.strftime("%m/%d/%y")%></h4>
 
-<p>
-  <strong>Total cost:</strong>
-  <%= @rsvp.total_cost %>
-</p>
+<h2>Attending:</h2>
+<% @rsvp.attendees.each do |a| %>
+  <div>
+    <p><%= a.name %></p>
+    <p>Selected Option: <%= a.event_option.name%></p>
+    <p>Cost: <%= money(a.event_option.price) %></p>
+  </div>
+<% end %>
 
-<p>
-  <strong>Payment status:</strong>
-  <%= @rsvp.payment_status %>
-</p>
+<h3>Total Cost: <%= money(@rsvp.total_cost)%></h3>
+
+<%= link_to "Pay with PayPal", "#" %>
+<p> If paying by check our cash please send payment to the following no later than (Some Date)</p>
+<p> address for payment to be inputted in event is made </p>
 
 <%= link_to 'Edit', edit_event_rsvp_path(@event, @rsvp) %> |
 <%= link_to 'Back', event_rsvps_path(@event) %>

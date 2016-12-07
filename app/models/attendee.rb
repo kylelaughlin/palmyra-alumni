@@ -7,5 +7,6 @@ class Attendee < ApplicationRecord
   validates :event_option_id, presence: true
   #validates :rsvp_id, presence:true
 
+  delegate :price, to: :event_option
 
 end
