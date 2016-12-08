@@ -11,14 +11,15 @@ class RsvpsController < ApplicationController
   # GET /rsvps/1
   # GET /rsvps/1.json
   def show
-
+    paypal_url_service = PaypalUrlCreator.new(@rsvp)
+    @paypal_url = paypal_url_service.call(event_rsvp_path(@event, @rsvp))
   end
 
   # GET /rsvps/new
   def new
     @rsvp = Rsvp.new
     @event = Event.find(params[:event_id])
-    @classmate_attendee = @rsvp.attendees.build(name: "Kyle")
+    @classmate_attendee = @rsvp.attendees.build(name: current_classmate.full_name)
     7.times { @rsvp.attendees.build }
   end
 
@@ -76,6 +77,6 @@ class RsvpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rsvp_params
-      params.require(:rsvp).permit(:classmate_id, :total_cost, :payment_status, attendees_attributes: [:name, :event_option_id, :rsvp_id])
+      params.require(:rsvp).permit(:classmate_id, :total_cost, :event_id, :payment_status, attendees_attributes: [:name, :event_option_id, :rsvp_id])
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207205645) do
+ActiveRecord::Schema.define(version: 20161208015442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20161207205645) do
     t.string   "payment_status"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "event_id"
   end
 
 end

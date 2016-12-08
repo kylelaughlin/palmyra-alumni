@@ -12,6 +12,8 @@
   <% end %>
 
   <%= f.hidden_field :classmate_id, value: "#{current_classmate.id}" %>
+  <%= f.hidden_field :event_id, value: "#{event.id}" %>
+
   <!-- <div class="field">
     <%= f.label :classmate_id %>
     <%= f.number_field :classmate_id %>
