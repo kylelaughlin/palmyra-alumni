@@ -9,4 +9,5 @@ class Event < ApplicationRecord
 
   accepts_nested_attributes_for :event_options, reject_if: :all_blank
 
+  scope :upcoming, -> { where('date >= ?', DateTime.now)}
 end

@@ -2,6 +2,7 @@ class Rsvp < ApplicationRecord
 
   has_many    :attendees, inverse_of: :rsvp
   belongs_to  :event, optional: true
+  belongs_to  :classmate
 
   validates :classmate_id, presence: true
 

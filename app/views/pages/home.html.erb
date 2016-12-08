@@ -1,9 +1,13 @@
+<nav>
+<ul>
+  <li><%= link_to current_classmate.full_name, edit_classmate_registration_path(current_classmate) %></li>
+  <li><%= link_to "Logout", destroy_classmate_session_path, method: :delete %>
+<ul>
+</nav>
+
 <h1>Home</h1>
-<p><%= current_classmate.email %></p>
-<%= link_to "Logout", destroy_classmate_session_path, method: :delete %>
-<% @posts.each do |post| %>
-  <h3><%= post.title %></h3>
-  <p>By: <%=post.classmate.email%> On: <%= post.created_at.strftime("%m/%d/%y")%></p>
-  <p><%= truncate(post.content,length: 400, :escape => false) %></p>
-  <%=link_to "Edit Post", edit_post_path(post) %>
+
+<h3>Events</h3>
+<% @events.each do |event| %>
+  <p><%= link_to "#{event.date.strftime("%m/%d/%y")} #{event.name}", event_path(event) %><p>
 <% end %>

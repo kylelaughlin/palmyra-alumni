@@ -5,6 +5,7 @@ class Classmate < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :posts
+  has_many :rsvps
 
   def full_name
     "#{self.first_name} #{self.last_name}"
