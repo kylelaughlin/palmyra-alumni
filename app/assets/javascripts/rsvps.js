@@ -5,12 +5,12 @@ $(document).on("turbolinks:load", function(){
   setupAttendeeForms();
 
   $("#add-attendee-button").on("click", function(){
-    displayNextForm();
+    displayNextAttendeeForm();
   })
 
 })
 
-var visibleForms = 0
+var visibleAttendeeForms = 0
 
 function setupAttendeeForms() {
   var forms = document.getElementsByClassName("attendee-form");
@@ -19,9 +19,9 @@ function setupAttendeeForms() {
   }
 }
 
-function displayNextForm() {
+function displayNextAttendeeForm() {
   var forms = document.getElementsByClassName("attendee-form");
-  nextForm = visibleForms + 1;
+  nextForm = visibleAttendeeForms + 1;
   forms[nextForm].className = "attendee-form";
-  visibleForms = nextForm;
+  visibleAttendeeForms = nextForm;
 }

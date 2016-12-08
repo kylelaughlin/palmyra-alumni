@@ -31,25 +31,27 @@
   <p>You may have up to five event food options. You do not need to use all five options. Please leave them blank if not used.</p>
 
   <%= f.fields_for :event_options do |ff| %>
-    <h4>Option</h4>
-    <div class="form-group">
-      <%= ff.label :name, "Description" %>
-      <%= ff.text_field :name, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= ff.label :price, "Cost" %>
-      <%= ff.number_field :price, class: "form-control" %>
-    </div>
-
-    <% if ff.object.persisted? %>
+    <div class="event-option-form">
+      <h4>Option</h4>
       <div class="form-group">
-        <%= ff.check_box :_destroy %>
-        <%= ff.label :_destroy, "Delete Option" %>
+        <%= ff.label :name, "Description" %>
+        <%= ff.text_field :name, class: "form-control" %>
       </div>
-    <% end %>
 
+      <div class="form-group">
+        <%= ff.label :price, "Cost" %>
+        <%= ff.number_field :price, class: "form-control", step: 0.01 %>
+      </div>
+
+      <% if ff.object.persisted? %>
+        <div class="form-group">
+          <%= ff.check_box :_destroy %>
+          <%= ff.label :_destroy, "Delete Option" %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
+  <%= link_to "Add Another Event Option", "javascript:void(0)", id: "event-option-button" %>
   <br/>
   <div class="actions">
     <%= f.submit "Create Event" %>
