@@ -14,7 +14,8 @@ class PaypalUrlCreator
         amount: @rsvp.total_cost/100,
         item_name: @rsvp.event.name,
         item_number: @rsvp.id,
-        quantity: '1'
+        quantity: '1',
+        notify_url: "#{ENV['APP_HOST']}/hook"
     }
     "#{ENV['PAYPAL_HOST']}/cgi-bin/webscr?" + values.to_query
   end

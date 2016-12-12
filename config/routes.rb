@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   post "/images", to: "images#create", as: "new_image"
 
+  post "/hook", to: 'rsvps#hook'
 
   resources :events do
     resources :attendees

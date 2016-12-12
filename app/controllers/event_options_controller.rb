@@ -18,35 +18,24 @@ class EventOptionsController < ApplicationController
 
   def create
     @event_option = EventOption.new(event_option_params)
-
-    respond_to do |format|
-      if @event_option.save
-        format.html { redirect_to @event_option, notice: 'Event option was successfully created.' }
-        format.json { render :show, status: :created, location: @event_option }
-      else
-        format.html { render :new }
-        format.json { render json: @event_option.errors, status: :unprocessable_entity }
-      end
+    if @event_option.save
+      redirect_to @event_option, notice: 'Event option was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @event_option.update(event_option_params)
-        format.html { redirect_to @event_option, notice: 'Event option was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event_option }
-      else
-        format.html { render :edit }
-        format.json { render json: @event_option.errors, status: :unprocessable_entity }
-      end
+    if @event_option.update(event_option_params)
+      redirect_to @event_option, notice: 'Event option was successfully updated.'
+]      else
+      render :edit
     end
   end
 
   def destroy
     @event_option.destroy
-    respond_to do |format|
-      format.html { redirect_to event_options_url, notice: 'Event option was successfully destroyed.' }
-      format.json { head :no_content }
+    redirect_to event_options_url, notice: 'Event option was successfully destroyed.'
     end
   end
 
