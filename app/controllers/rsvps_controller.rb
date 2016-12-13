@@ -14,7 +14,8 @@ class RsvpsController < ApplicationController
   end
 
   def new
-    @rsvp = Rsvp.new
+    @rsvp = Rsvp.new(event_id: params[:event_id])
+    authorize @rsvp
     @event = Event.find(params[:event_id])
     @classmate_attendee = @rsvp.attendees.build(name: current_classmate.full_name)
     7.times { @rsvp.attendees.build }

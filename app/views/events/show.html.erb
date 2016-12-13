@@ -24,7 +24,11 @@
 <% end %>
 
 <div>
-  <%= link_to 'RSVP', new_event_rsvp_path(@event) %>
+  <% if current_classmate.rsvps.where(event_id: @event.id).empty? %>
+    <%= link_to 'RSVP', new_event_rsvp_path(@event) %>
+  <% else %>
+    <%= link_to 'View RSVP', event_rsvp_path(@event, current_classmate.rsvps.where(event_id: @event.id)[0]) %>
+  <% end %>
 </div>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
