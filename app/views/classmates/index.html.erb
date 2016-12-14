@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <th>Name</th>
+    <th>Email</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Phone</th>
+    <th>Class</th>
+    <th colspan="3"></th>
+  </thead>
+  <tbody>
+    <% @classmates.each do |c| %>
+      <tr>
+        <td><%= c.full_name %></td>
+        <td><%= c.email %></td>
+        <td><%= c.city %></td>
+        <td><%= c.state %></td>
+        <td><%= c.phone %></td>
+        <td><%= c.class_year %></td>
+        <td><%= link_to "View", classmate_path(c) %></td>
+        <td><%= link_to "Edit", edit_classmate_registration_path(c) %></td>
+        <td><%= link_to "Delete", classmate_path(c), method: :delete, confirm: "Are you sure you want to delete #{c.full_name}" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

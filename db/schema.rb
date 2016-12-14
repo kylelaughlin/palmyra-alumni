@@ -90,9 +90,9 @@ ActiveRecord::Schema.define(version: 20161214004746) do
   create_table "rsvps", force: :cascade do |t|
     t.integer  "classmate_id"
     t.integer  "total_cost"
-    t.string   "payment_status"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "payment_status", default: "Not Paid"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "event_id"
   end
 

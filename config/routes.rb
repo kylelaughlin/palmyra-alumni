@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root to: "pages#home"
 
-  devise_for :classmates
+  devise_for :classmates, prefix: 'my'
 
+  resources :classmates
 
   post "/images", to: "images#create", as: "new_image"
 
