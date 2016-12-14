@@ -5,6 +5,7 @@ class RsvpsController < ApplicationController
 
   def index
     @rsvps = Rsvp.all
+    authorize @rsvps
     @event = Event.find(params[:event_id])
   end
 

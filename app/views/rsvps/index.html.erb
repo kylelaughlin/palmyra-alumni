@@ -15,12 +15,12 @@
   <tbody>
     <% @rsvps.each do |rsvp| %>
       <tr>
-        <td><%= rsvp.classmate_id %></td>
-        <td><%= rsvp.total_cost %></td>
+        <td><%= rsvp.classmate.full_name %></td>
+        <td><%= money(rsvp.total_cost) %></td>
         <td><%= rsvp.payment_status %></td>
-        <td><%= link_to 'Show', rsvp %></td>
-        <td><%= link_to 'Edit', edit_rsvp_path(rsvp) %></td>
-        <td><%= link_to 'Destroy', rsvp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', event_rsvp_path(rsvp.event_id, rsvp.id) %></td>
+        <td><%= link_to 'Edit', edit_event_rsvp_path(rsvp.event_id, rsvp.id) %></td>
+        <td><%= link_to 'Destroy', event_rsvp_path(rsvp.event_id, rsvp.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
