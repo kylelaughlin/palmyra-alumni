@@ -15,4 +15,8 @@ module ApplicationHelper
     "$#{number_with_precision(price / 100, precision: 2)}"
   end
 
+  def show_main_nav?
+    !(controller_name == 'sessions') && !(current_page?(new_classmate_registration_path))
+  end
+
 end

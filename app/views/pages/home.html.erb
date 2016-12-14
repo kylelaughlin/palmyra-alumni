@@ -1,13 +1,18 @@
-<nav>
-<ul>
-  <li><%= link_to current_classmate.full_name, edit_classmate_registration_path(current_classmate) %></li>
-  <li><%= link_to "Logout", destroy_classmate_session_path, method: :delete %>
-<ul>
-</nav>
+<div class="row">
+  <div class="col-md-7">
 
-<h1>Home</h1>
+    <h3>Upcoming Events</h3>
+    <% @events.each do |event| %>
 
-<h3>Events</h3>
-<% @events.each do |event| %>
-  <p><%= link_to "#{event.date.strftime("%m/%d/%y")} #{event.name}", event_path(event) %><p>
-<% end %>
+      <div class="card card-event">
+        <h3><%= link_to event.name, event_path(event) %></h3>
+        <p>Date: <%= event.date.strftime("%m/%d/%y") %></p>
+        <p><%= simple_format(event.content) %></p>
+        <%= link_to "See more and RSVP", event_path(event)%>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-5">
+    <h3>Other text</h3>
+  </div>
+</div>

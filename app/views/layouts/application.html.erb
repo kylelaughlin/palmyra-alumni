@@ -11,20 +11,14 @@
 
   <body>
 
-    <% if flash[:alert] %>
-      <div class="alert alert-danger">
-        <button class="close" data-dismiss="alert">x</button>
-        <%= flash[:alert] %>
-      </div>
+    <% if show_main_nav? %>
+      <%= render "layouts/navbar" %>
     <% end %>
 
-    <% if flash[:notice] %>
-      <div class="alert alert-info">
-        <button class="close" data-dismiss="alert">x</button>
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
+    <div class="container">
+      <%= render "layouts/flash_messages" %>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>
