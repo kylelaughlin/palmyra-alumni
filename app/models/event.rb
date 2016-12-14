@@ -6,6 +6,9 @@ class Event < ApplicationRecord
   validates :name, presence: true
   validates :date, presence: true
   validates :content, presence: true
+  validates :time, presence: true
+  validates :rsvp_by, presence: true
+  validates :payment_instructions, presence: true
 
   accepts_nested_attributes_for :event_options, reject_if: :all_blank
 

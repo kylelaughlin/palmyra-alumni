@@ -1,19 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h3>
   <%= @event.name %>
-</p>
+</h3>
 
 <p>
-  <strong>Date:</strong>
-  <%= @event.date %>
+  <strong>Date: </strong><%= @event.date %><br/>
+  <%= @event.time %>
 </p>
 
 <p>
   <strong>Content:</strong>
   <%= simple_format(@event.content) %>
 </p>
+
+<p>RSVPs must be submitted by <%= @event.rsvp_by.strftime("%m/%d/%y") %></p>
 
 <h4>Food Options</h4>
 <% @event.event_options.each do |option| %>

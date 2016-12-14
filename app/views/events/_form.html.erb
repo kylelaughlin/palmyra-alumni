@@ -15,16 +15,33 @@
     <%= f.label :name %>
     <%= f.text_field :name, class: "form-control" %>
   </div>
-
+  <br/>
   <div class="form-group">
     <%= f.label :date %>
     <%= f.date_select :date, class: "form-control" %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :time %>
+    <%= f.text_field :time, class: "form-control" %>
+  </div>
 
   <div class="form-group">
     <%= f.label :content, "Event Description" %>
     <%= f.text_area :content, class: "form-control", size: "100x15" %>
+  </div>
+
+  <div class="form-group">
+    <p>This is the date in which guests must have their RSVP submitted</p>
+    <%= f.label :rsvp_by %>
+    <%= f.date_select :rsvp_by, class: "form-control" %>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label :payment_instructions %>
+    <p>These are instructions for guests to submit alternative payment to Paypal.</p>
+    <%= f.text_area :payment_instructions, class: "form-control", size: "100x10" %>
   </div>
 
   <h3>Event Food Options</h3>
