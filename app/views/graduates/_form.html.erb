@@ -1,0 +1,27 @@
+<%= form_for(graduate) do |f| %>
+  <% if graduate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(graduate.errors.count, "error") %> prohibited this graduate from being saved:</h2>
+
+      <ul>
+      <% graduate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :class_year, "Graduation Year" %>
+    <%= f.select(:class_year, options_for_select(class_years), include_blank: true, class: "form-control") %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

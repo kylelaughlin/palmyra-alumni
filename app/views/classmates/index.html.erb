@@ -1,26 +1,36 @@
-<table class="table">
-  <thead>
-    <th>Name</th>
-    <th>Email</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Phone</th>
-    <th>Class</th>
-    <th colspan="3"></th>
-  </thead>
-  <tbody>
-    <% @classmates.each do |c| %>
-      <tr>
-        <td><%= c.full_name %></td>
-        <td><%= c.email %></td>
-        <td><%= c.city %></td>
-        <td><%= c.state %></td>
-        <td><%= c.phone %></td>
-        <td><%= c.class_year %></td>
-        <td><%= link_to "View", classmate_path(c) %></td>
-        <td><%= link_to "Edit", edit_classmate_registration_path(c) %></td>
-        <td><%= link_to "Delete", classmate_path(c), method: :delete, confirm: "Are you sure you want to delete #{c.full_name}" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="col-md-4">
+    <p>Select a graduation year to view<p>
+    <%= label_tag :class_year, "Graduation Year" %>
+    <%= select_tag(:class_year, options_for_select(class_years), include_blank: true, class: "form-control") %>
+  </div>
+  <div class="col-md-8">
+    <div class="row">
+      <h1>Class of <%= @class_year %></h1>
+      <div class="col-md-6">
+        <h4>Signed up classmates</h4>
+        <ul>
+          <% @classmates.each do |classmate| %>
+            <li>
+              <% if classmate.is_private %>
+                <p><%= classmate.full_name %></p>
+              <% else %>
+                <p><%= link_to classmate.full_name, classmate_path(classmate) %></p>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h4>All Graduates</h4>
+        <ul>
+          <% @graduates.each do |graduate| %>
+            <li><%= graduate.name %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</div>

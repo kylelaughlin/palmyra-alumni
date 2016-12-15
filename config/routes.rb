@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :graduates
   root to: "pages#home"
 
   devise_for :classmates, prefix: 'my'
