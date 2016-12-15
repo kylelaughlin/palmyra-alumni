@@ -1,36 +1,19 @@
+
+<% content_for :head do %>
+  <meta name="turbolinks-cache-control" content="no-cache">
+<% end %>
+
 <div class="row">
   <div class="col-md-4">
     <p>Select a graduation year to view<p>
     <%= label_tag :class_year, "Graduation Year" %>
-    <%= select_tag(:class_year, options_for_select(class_years), include_blank: true, class: "form-control") %>
+    <%= select_tag(:class_year, options_for_select(class_years), include_blank: true, class: "form-control", id: "class-selector") %>
   </div>
   <div class="col-md-8">
-    <div class="row">
-      <h1>Class of <%= @class_year %></h1>
-      <div class="col-md-6">
-        <h4>Signed up classmates</h4>
-        <ul>
-          <% @classmates.each do |classmate| %>
-            <li>
-              <% if classmate.is_private %>
-                <p><%= classmate.full_name %></p>
-              <% else %>
-                <p><%= link_to classmate.full_name, classmate_path(classmate) %></p>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="col-md-6">
-        <h4>All Graduates</h4>
-        <ul>
-          <% @graduates.each do |graduate| %>
-            <li><%= graduate.name %></li>
-          <% end %>
-        </ul>
-      </div>
+    <div id="classmate-lists">
+
+      <%= render "classmates_list", class_year: @class_year, classmates: @classmates, graduates: @graduates %>
+
     </div>
-
   </div>
-
 </div>

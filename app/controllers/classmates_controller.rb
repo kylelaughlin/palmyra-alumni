@@ -3,14 +3,22 @@ class ClassmatesController < ApplicationController
   def index
     @classmates = []
     @graduates = []
+    @class_year = params[:class] || current_classmate.class_year
     if params[:class]
       @classmates = Classmate.where(class_year: params[:class])
       @graduates = Graduate.where(class_year: params[:class])
+      render "classmates/index.js.erb"
     else
       @classmates = Classmate.where(class_year: current_classmate.class_year)
       @graduates = Graduate.where(class_year: current_classmate.class_year)
     end
-    @class_year = params[:class] || current_classmate.class_year
+    # respond_to do |format|
+    #   format.html
+    #   format.js {
+    #     render template: "classmates.index.js.erb",
+    #            layout: false
+    #   }
+    # end
   end
 
   def show
