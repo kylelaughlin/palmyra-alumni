@@ -5,27 +5,31 @@ class GraduatesController < ApplicationController
   # GET /graduates.json
   def index
     @graduates = Graduate.all
+    authorize @graduates
   end
 
   # GET /graduates/1
   # GET /graduates/1.json
   def show
+    authorize @graduate
   end
 
   # GET /graduates/new
   def new
     @graduate = Graduate.new
+    authorize @graduate
   end
 
   # GET /graduates/1/edit
   def edit
+    authorize @graduate
   end
 
   # POST /graduates
   # POST /graduates.json
   def create
     @graduate = Graduate.new(graduate_params)
-
+    authorize @graduate
     respond_to do |format|
       if @graduate.save
         format.html { redirect_to @graduate, notice: 'Graduate was successfully created.' }
@@ -40,6 +44,7 @@ class GraduatesController < ApplicationController
   # PATCH/PUT /graduates/1
   # PATCH/PUT /graduates/1.json
   def update
+    authorize @graduate
     respond_to do |format|
       if @graduate.update(graduate_params)
         format.html { redirect_to @graduate, notice: 'Graduate was successfully updated.' }
@@ -54,6 +59,7 @@ class GraduatesController < ApplicationController
   # DELETE /graduates/1
   # DELETE /graduates/1.json
   def destroy
+    authorize @graduate
     @graduate.destroy
     respond_to do |format|
       format.html { redirect_to graduates_url, notice: 'Graduate was successfully destroyed.' }
