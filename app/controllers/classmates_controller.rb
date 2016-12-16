@@ -2,6 +2,7 @@ class ClassmatesController < ApplicationController
 
   def index
     @classmates = []
+    authorize Classmate
     @graduates = []
     @class_year = params[:class] || current_classmate.class_year
     if params[:class]

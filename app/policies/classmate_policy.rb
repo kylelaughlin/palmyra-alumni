@@ -1,7 +1,7 @@
 class ClassmatePolicy < ApplicationPolicy
 
   def index?
-    @user && @user.admin?
+    @user
   end
 
   def show?
