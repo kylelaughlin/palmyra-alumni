@@ -13,13 +13,10 @@ class ClassmatesController < ApplicationController
       @classmates = Classmate.where(class_year: current_classmate.class_year)
       @graduates = Graduate.where(class_year: current_classmate.class_year)
     end
-    # respond_to do |format|
-    #   format.html
-    #   format.js {
-    #     render template: "classmates.index.js.erb",
-    #            layout: false
-    #   }
-    # end
+  end
+
+  def admin_index
+    @classmates = Classmate.all
   end
 
   def show

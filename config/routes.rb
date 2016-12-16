@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :classmates
 
+  get "/admin_classmates", to: 'classmates#admin_index', as: "admin_classmates"
+
   post "/images", to: "images#create", as: "new_image"
 
   post "/hook", to: 'rsvps#hook'
