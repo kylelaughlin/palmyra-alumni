@@ -37,15 +37,16 @@ class RsvpsController < ApplicationController
 
   def update
     if @rsvp.update(rsvp_params)
-      redirect_to @rsvp, notice: 'Rsvp was successfully updated.'
+      redirect_to event_rsvp_path(@rsvp.event_id, @rsvp.id), notice: 'Rsvp was successfully updated.'
     else
       render :edit
     end
   end
 
   def destroy
+    @event = Event.find(@rsvp.event_id)
     @rsvp.destroy
-    redirect_to rsvps_url, notice: 'Rsvp was successfully destroyed.'
+    redirect_to event_path(@event), notice: 'Rsvp was successfully destroyed.'
   end
 
   def hook
@@ -59,6 +60,6 @@ class RsvpsController < ApplicationController
     end
 
     def rsvp_params
-      params.require(:rsvp).permit(:classmate_id, :total_cost, :event_id, :payment_status, attendees_attributes: [:name, :event_option_id, :rsvp_id])
+      params.require(:rsvp).permit(:classmate_id, :total_cost, :event_id, :payment_status, attendees_attributes: [:id, :name, :event_option_id, :rsvp_id])
     end
 end

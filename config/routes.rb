@@ -13,8 +13,9 @@ Rails.application.routes.draw do
   post "/hook", to: 'rsvps#hook'
 
   resources :events do
-    resources :attendees
-    resources :rsvps
+    resources :rsvps do
+      resources :attendees
+    end
     resources :event_options
   end
 

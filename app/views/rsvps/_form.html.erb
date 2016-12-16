@@ -27,7 +27,17 @@
     </div>
   <% end %>
 
+  <% if current_classmate.admin? %>
+    <div class="form-group">
+      <h4>Viewable to Administrators only.</h4>
+      <%= f.label :payment_status %>
+      <%= f.select(:payment_status, options_for_select(["Not Paid", "Paid"], :payment_status)) %>
+    </div>
+  <% end %>
+
+  <% if !@rsvp.persisted? %>
   <%= link_to "Add Another Attendee", "javascript:void(0)", id: "add-attendee-button"%>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>
