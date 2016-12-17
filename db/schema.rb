@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 20161215214931) do
     t.string   "phone"
     t.boolean  "is_private"
     t.string   "class_year"
-    t.boolean  "stand_in"
     t.index ["email"], name: "index_classmates_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_classmates_on_reset_password_token", unique: true, using: :btree
   end

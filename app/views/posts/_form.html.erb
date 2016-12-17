@@ -5,8 +5,10 @@
   </div>
 
   <div class="form-group">
-    <%= f.hidden_field :content, value: @post.content %>
-    <trix-editor input="post_content" class="trix-content"></trix-editor>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <!-- <%= f.hidden_field :content, value: @post.content %> -->
+    <!-- <trix-editor input="post_content" class="trix-content"></trix-editor> -->
   </div>
 
   <%= f.hidden_field :classmate_id, value: current_classmate.id %>

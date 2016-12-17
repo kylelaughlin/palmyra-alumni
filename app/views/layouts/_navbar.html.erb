@@ -19,6 +19,12 @@
       <% if current_classmate %>
         <li><%= link_to "Logout", destroy_classmate_session_path, method: :delete %></li>
       <% end %>
+        <% if current_classmate %>
+          <li><%= link_to "Logout", destroy_classmate_session_path, method: :delete %></li>
+        <% end %>
+        <% if current_classmate.admin? %>
+          <li><%= link_to "Admin", admin_classmates_path %>
+        <% end %>
       </ul>
     </div>
   </div>
