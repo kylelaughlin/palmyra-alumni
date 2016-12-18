@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand text-danger" href="#">Palmyra Bennet Alumni</a>
+      <a class="navbar-brand text-danger" href="/">Palmyra Bennet Alumni</a>
     </div>
     <div class="navbar-collapse collapse" id="navbar-collapsible">
       <ul class="nav navbar-nav navbar-left">
@@ -16,9 +16,6 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to current_classmate.full_name, edit_classmate_registration_path(current_classmate) %></li>
-      <% if current_classmate %>
-        <li><%= link_to "Logout", destroy_classmate_session_path, method: :delete %></li>
-      <% end %>
         <% if current_classmate %>
           <li><%= link_to "Logout", destroy_classmate_session_path, method: :delete %></li>
         <% end %>
