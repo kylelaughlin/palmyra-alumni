@@ -8,7 +8,7 @@ class PagesController < ApplicationController
   end
 
   def admin_dashboard
-    
+    @events = Event.all.order('date DESC')
   end
 
 end

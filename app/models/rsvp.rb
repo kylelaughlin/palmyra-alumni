@@ -6,7 +6,7 @@ class Rsvp < ApplicationRecord
 
   validates :classmate_id, presence: true
 
-  accepts_nested_attributes_for :attendees, reject_if: :all_blank
+  accepts_nested_attributes_for :attendees, reject_if: :all_blank, allow_destroy: true
 
   after_create :compute_total_cost
 

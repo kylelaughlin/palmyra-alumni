@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :classmates
 
+  get "/admin_dashboard", to: 'pages#admin_dashboard', as: "admin_dashboard"
   get "/admin_classmates", to: 'classmates#admin_index', as: "admin_classmates"
   get "/events/:event_id/admin_rsvps", to: 'rsvps#admin_index', as: "admin_rsvps"
 

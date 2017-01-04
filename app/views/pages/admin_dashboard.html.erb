@@ -1,0 +1,21 @@
+<h1>Admin Dashboard</h1>
+
+<%= link_to "All Classmates", admin_classmates_path %>
+
+<h4>Events</h4>
+<table>
+  <thead>
+    <th>Event</th>
+    <th>Date</th>
+    <th>View RSVPS</th>
+  </thead>
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= link_to event.name, event_path(event) %></td>
+        <td><%= event.date.strftime("%m/%d/%y") %></td>
+        <td><%= link_to "See RSVPs", admin_rsvps_path(event.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -9,6 +9,11 @@ class RsvpsController < ApplicationController
     @event = Event.find(params[:event_id])
   end
 
+  def admin_index
+    @event = Event.find(params[:event_id])
+    @rsvps = @event.rsvps.includes(:attendees)
+  end
+
   def show
     paypal_url_service = PaypalUrlCreator.new(@rsvp)
     @paypal_url = paypal_url_service.call(event_rsvp_path(@event, @rsvp))
@@ -23,6 +28,7 @@ class RsvpsController < ApplicationController
   end
 
   def edit
+    6.times { @rsvp.attendees.build }
   end
 
   def create
@@ -50,7 +56,7 @@ class RsvpsController < ApplicationController
   end
 
   def hook
-    @rsvp = RSVP.find(params[:item_number])
+    @rsvp = Rsvp.find(params[:item_number])
     PayRsvp.new(params, "paypal", @rsvp).call
     render nothing: true
   end
