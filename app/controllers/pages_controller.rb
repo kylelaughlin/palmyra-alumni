@@ -7,4 +7,8 @@ class PagesController < ApplicationController
     @events = Event.upcoming
   end
 
+  def admin_dashboard
+    
+  end
+
 end

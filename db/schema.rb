@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215214931) do
+ActiveRecord::Schema.define(version: 20170104174530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,10 +97,14 @@ ActiveRecord::Schema.define(version: 20161215214931) do
   create_table "rsvps", force: :cascade do |t|
     t.integer  "classmate_id"
     t.integer  "total_cost"
-    t.string   "payment_status", default: "Not Paid"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "payment_status",        default: "Not Paid"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "event_id"
+    t.datetime "payment_on"
+    t.string   "paypal_payment_status"
+    t.integer  "paid_amount"
+    t.string   "invoice_id"
   end
 
 end

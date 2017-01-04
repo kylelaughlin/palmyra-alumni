@@ -50,7 +50,9 @@ class RsvpsController < ApplicationController
   end
 
   def hook
-    byebug
+    @rsvp = RSVP.find(params[:item_number])
+    PayRsvp.new(params, "paypal", @rsvp).call
+    render nothing: true
   end
 
   private

@@ -4,4 +4,8 @@ class PagePolicy < ApplicationPolicy
     @user
   end
 
+  def admin_dashboard?
+    @user.admin?
+  end
+
 end

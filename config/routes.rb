@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :classmates
 
   get "/admin_classmates", to: 'classmates#admin_index', as: "admin_classmates"
+  get "/events/:event_id/admin_rsvps", to: 'rsvps#admin_index', as: "admin_rsvps"
 
   post "/images", to: "images#create", as: "new_image"
 
