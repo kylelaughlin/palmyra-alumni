@@ -1,6 +1,6 @@
 <h1>Editing Attendee</h1>
 
-<%= render 'form', attendee: @attendee %>
+<%= render 'form', attendee: @attendee, event: @event, rsvp: @rsvp %>
 
-<%= link_to 'Show', @attendee %> |
-<%= link_to 'Back', attendees_path %>
+<%= link_to "Delete Attendee", event_rsvp_attendee_path(@event, @rsvp, @attendee), method: :delete, class: "btn btn-danger" %>
+<%= link_to 'Back To RSVP', edit_event_rsvp_path(@event, @rsvp) %>

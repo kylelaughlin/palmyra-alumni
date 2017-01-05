@@ -5,6 +5,7 @@
     <th>ID</th>
     <th>Classmate</th>
     <th>Total Cost</th>
+    <th>Amount Paid</th>
     <th>Payment Status</th>
     <th>Payment Date</th>
   </thead>
@@ -14,6 +15,7 @@
         <td><%= rsvp.id %></td>
         <td><%= link_to rsvp.classmate.full_name, event_rsvp_path(rsvp.event_id, rsvp.id) %></td>
         <td><%= money(rsvp.total_cost) %></td>
+        <td><%= rsvp.paid_amount.nil? ? "--" : money(rsvp.paid_amount) %>
         <td><%= rsvp.payment_status %></td>
         <td><%= rsvp.payment_on ? rsvp.payment_on.strftime("%m/%d/%y") : "--" %></td>
       </tr>

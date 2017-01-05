@@ -1,5 +1,5 @@
-<h1>New Attendee</h1>
+<h1>Add Attendee for <%= @rsvp.classmate.full_name %> RSVP</h1>
 
-<%= render 'form', attendee: @attendee %>
+<%= render 'form', attendee: @attendee, event: @event, rsvp: @rsvp %>
 
-<%= link_to 'Back', attendees_path %>
+<%= link_to 'Back to RSVP', edit_event_rsvp_path(@event, @rsvp) %>

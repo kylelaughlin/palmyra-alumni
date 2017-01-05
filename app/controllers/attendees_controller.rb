@@ -9,33 +9,44 @@ class AttendeesController < ApplicationController
   end
 
   def new
+    @event = Event.find(params[:event_id])
+    @rsvp = Rsvp.find(params[:rsvp_id])
     @attendee = Attendee.new
   end
 
   def edit
+    @event = Event.find(params[:event_id])
+    @rsvp = Rsvp.find(params[:event_id])
   end
 
   def create
-    @attendee = Attendee.new(attendee_params)
+    @event = Event.find(params[:event_id])
+    @rsvp = Rsvp.find(params[:rsvp_id])
+    @attendee = @rsvp.attendees.build(attendee_params)
     if @attendee.save
-      redirect_to @attendee, notice: 'Attendee was successfully created.'
+      @rsvp.adjust_total_cost
+      redirect_to edit_event_rsvp_path(@event, @rsvp), notice: 'Attendee was successfully created.'
     else
       render :new
     end
   end
 
   def update
-      if @attendee.update(attendee_params)
-        redirect_to @attendee, notice: 'Attendee was successfully updated.'
-      else
-        render :edit
-      end
+    @event = Event.find(params[:event_id])
+    @rsvp = Rsvp.find(params[:rsvp_id])
+    if @attendee.update(attendee_params)
+      redirect_to edit_event_rsvp_path(@event, @rsvp), notice: 'Attendee was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
+    @event = Event.find(params[:event_id])
+    @rsvp = Rsvp.find(params[:rsvp_id])
     @attendee.destroy
-    redirect_to attendees_url, notice: 'Attendee was successfully destroyed.'
+    @rsvp.adjust_total_cost
+    redirect_to event_rsvp_path(@event, @rsvp), notice: 'Attendee was successfully destroyed.'
   end
 
   private
@@ -44,6 +55,6 @@ class AttendeesController < ApplicationController
     end
 
     def attendee_params
-      params.require(:attendee).permit(:rsvp_id, :name, :event_option_id)
+      params.require(:attendee).permit(:name, :event_option_id)
     end
 end

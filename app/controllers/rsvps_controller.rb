@@ -28,7 +28,6 @@ class RsvpsController < ApplicationController
   end
 
   def edit
-    6.times { @rsvp.attendees.build }
   end
 
   def create
@@ -68,6 +67,6 @@ class RsvpsController < ApplicationController
     end
 
     def rsvp_params
-      params.require(:rsvp).permit(:classmate_id, :total_cost, :event_id, :payment_status, attendees_attributes: [:id, :name, :event_option_id, :rsvp_id])
+      params.require(:rsvp).permit(:classmate_id, :total_cost, :event_id, :payment_status, :paid_amount, attendees_attributes: [:id, :name, :event_option_id, :rsvp_id])
     end
 end

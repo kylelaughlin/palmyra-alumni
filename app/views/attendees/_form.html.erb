@@ -1,4 +1,5 @@
-<%= form_for(attendee) do |f| %>
+
+<%= form_for [event, rsvp, attendee] do |f| %>
   <% if attendee.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(attendee.errors.count, "error") %> prohibited this attendee from being saved:</h2>
@@ -11,19 +12,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :rsvp_id %>
-    <%= f.number_field :rsvp_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :event_option %>
-    <%= f.text_field :event_option %>
+  <div class="attendee-form">
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :event_option_id, "Options" %>
+      <%= f.collection_select(:event_option_id, event.event_options, :id, :name_with_price, prompt: true, class: "form-control") %>
+    </div>
   </div>
 
   <div class="actions">

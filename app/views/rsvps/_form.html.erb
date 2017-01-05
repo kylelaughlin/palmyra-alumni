@@ -14,29 +14,57 @@
   <%= f.hidden_field :classmate_id, value: "#{current_classmate.id}" %>
   <%= f.hidden_field :event_id, value: "#{event.id}" %>
 
-  <%= f.fields_for :attendees do |ff| %>
-    <div class="attendee-form">
-      <div class="form-group">
-        <%= ff.label :name %>
-        <%= ff.text_field :name, class: "form-control" %>
+  <% if !rsvp.persisted? %>
+    <%= f.fields_for :attendees do |ff| %>
+      <div class="attendee-form">
+        <div class="form-group">
+          <%= ff.label :name %>
+          <%= ff.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= ff.label :event_option_id, "Options" %>
+          <%= ff.collection_select(:event_option_id, @event.event_options, :id, :name_with_price, prompt: true, class: "form-control") %>
+        </div>
+        <div class="form-group">
+          Delete: <%= ff.check_box :_destroy %>
+        </div>
       </div>
-      <div class="form-group">
-        <%= ff.label :event_option_id, "Options" %>
-        <%= ff.collection_select(:event_option_id, @event.event_options, :id, :name_with_price, prompt: true, class: "form-control") %>
-      </div>
-      <div class="form-group">
-        Delete: <%= ff.check_box :_destroy %>
-      </div>
-    </div>
+    <% end %>
+
+    <%= link_to "Add Attendee", "javascript:void(0)", id: "add-attendee-button"%>
   <% end %>
 
-    <%= link_to "Add Another Attendee", "javascript:void(0)", id: "add-attendee-button"%>
+  <% if rsvp.persisted? %>
+    <% rsvp.attendees.each do |a| %>
+      <div>
+        <h4>
+          <%= a.name %>
+          <small>
+          <%=a.event_option.name%> <%=money(a.event_option.price) %>
+          <%=link_to "Edit", edit_event_rsvp_attendee_path(event, rsvp, a) %>
+          </small>
+        </h4>
+
+      </div>
+    <% end %>
+
+    <%= link_to "Add Attendee", new_event_rsvp_attendee_path(event, rsvp), class: "btn btn-primary" %>
+
+  <% end %>
 
   <% if current_classmate.admin? %>
-    <div class="form-group">
-      <h4>Viewable to Administrators only.</h4>
-      <%= f.label :payment_status %>
-      <%= f.select(:payment_status, options_for_select(["Not Paid", "Paid"], :payment_status)) %>
+    <div class="card">
+      <div class="form-group">
+        <h4>Viewable to Administrators only.</h4>
+        <%= f.label :payment_status %>
+        <%= f.select(:payment_status, options_for_select(["Not Paid", "Paid", "Over Paid", "Extra Payment Due"], rsvp.payment_status)) %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :paid_amount, "Amount Paid" %>
+        <%= f.number_field :paid_amount, value: @rsvp.paid_amount.nil? ? 0 : @rsvp.paid_amount/100, class: "form-control", step: 0.01 %>
+      </div>
+      <p>If changes to an rsvp where made and a refund was made or the classmate made an additional payment please input the total amount the classmate paid here.</p>
     </div>
   <% end %>
 
