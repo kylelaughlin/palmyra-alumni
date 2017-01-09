@@ -46,7 +46,7 @@ class AttendeesController < ApplicationController
     @rsvp = Rsvp.find(params[:rsvp_id])
     @attendee.destroy
     @rsvp.adjust_total_cost
-    redirect_to event_rsvp_path(@event, @rsvp), notice: 'Attendee was successfully destroyed.'
+    redirect_to edit_event_rsvp_path(@event, @rsvp), notice: 'Attendee was successfully destroyed.'
   end
 
   private

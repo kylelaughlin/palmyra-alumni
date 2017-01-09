@@ -1,6 +1,6 @@
 <h1>Editing Event Option</h1>
 
-<%= render 'form', event_option: @event_option %>
+<%= render 'form', event_option: @event_option, event: @event %>
 
-<%= link_to 'Show', @event_option %> |
-<%= link_to 'Back', event_options_path %>
+<%= link_to "Delete", event_event_option_path(@event, @event_option), method: :delete %> |
+<%= link_to 'Back', edit_event_path(@event) %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170104174530) do
+ActiveRecord::Schema.define(version: 20170109191414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,9 +53,9 @@ ActiveRecord::Schema.define(version: 20170104174530) do
 
   create_table "event_options", force: :cascade do |t|
     t.string   "name"
-    t.integer  "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.decimal  "price",      precision: 6, scale: 2
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "event_id"
   end
 
@@ -96,14 +96,14 @@ ActiveRecord::Schema.define(version: 20170104174530) do
 
   create_table "rsvps", force: :cascade do |t|
     t.integer  "classmate_id"
-    t.integer  "total_cost"
-    t.string   "payment_status",        default: "Not Paid"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
+    t.decimal  "total_cost",            precision: 6, scale: 2
+    t.string   "payment_status",                                default: "Not Paid"
+    t.datetime "created_at",                                                         null: false
+    t.datetime "updated_at",                                                         null: false
     t.integer  "event_id"
     t.datetime "payment_on"
     t.string   "paypal_payment_status"
-    t.integer  "paid_amount"
+    t.decimal  "paid_amount",           precision: 6, scale: 2
     t.string   "invoice_id"
   end
 

@@ -42,7 +42,7 @@ class PayRsvp
   end
 
   def paypal_paid_amount
-    @params["mc_gross"].to_i * 100
+    @params["mc_gross"]
   end
 
 end

@@ -1,6 +1,6 @@
 class EventOptionsController < ApplicationController
   before_action :set_event_option, only: [:show, :edit, :update, :destroy]
-  before_action :set_event, except: [:destroy]
+  before_action :set_event
 
   def index
     @event_options = EventOption.all
@@ -17,9 +17,9 @@ class EventOptionsController < ApplicationController
   end
 
   def create
-    @event_option = EventOption.new(event_option_params)
+    @event_option = @event.event_options.build(event_option_params)
     if @event_option.save
-      redirect_to @event_option, notice: 'Event option was successfully created.'
+      redirect_to edit_event_path(@event), notice: 'Event option was successfully created.'
     else
       render :new
     end
@@ -27,16 +27,15 @@ class EventOptionsController < ApplicationController
 
   def update
     if @event_option.update(event_option_params)
-      redirect_to @event_option, notice: 'Event option was successfully updated.'
-]      else
+      redirect_to edit_event_path(@event), notice: 'Event option was successfully updated.'
+    else
       render :edit
     end
   end
 
   def destroy
     @event_option.destroy
-    redirect_to event_options_url, notice: 'Event option was successfully destroyed.'
-    end
+    redirect_to edit_event_path(@event), notice: 'Event option was successfully destroyed.'
   end
 
   private
@@ -45,7 +44,7 @@ class EventOptionsController < ApplicationController
     end
 
     def set_event
-      @events = Event.find(params[:event_id])
+      @event = Event.find(params[:event_id])
     end
 
     def event_option_params

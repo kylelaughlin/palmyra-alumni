@@ -12,7 +12,7 @@ class PaypalUrlCreator
         upload: 1,
         return: "#{ENV['APP_HOST']}#{return_path}",
         invoice: @rsvp.invoice_id,
-        amount: @rsvp.total_cost/100,
+        amount: @rsvp.total_cost,
         item_name: @rsvp.event.name,
         item_number: @rsvp.id,
         quantity: '1',

@@ -47,6 +47,7 @@
   <h3>Event Food Options</h3>
   <p>You may have up to five event food options. You do not need to use all five options. Please leave them blank if not used.</p>
 
+  <% if !event.persisted? %>
   <%= f.fields_for :event_options do |ff| %>
     <div class="event-option-form">
       <h4>Option</h4>
@@ -70,7 +71,20 @@
   <% end %>
   <%= link_to "Add Another Event Option", "javascript:void(0)", id: "event-option-button" %>
   <br/>
+  <% end %>
+
+  <% if event.persisted? %>
+    <% event.event_options.each do |eo| %>
+      <h4>Option</h4>
+      <p>Description: <%= eo.name %></p>
+      <p>Price: <%= money(eo.price) %></p>
+      <%= link_to "Edit Option", edit_event_event_option_path(event, eo) %>
+    <% end %>
+    <br/>
+    <%= link_to "Add Event Option", new_event_event_option_path(event), class: "btn btn-success" %>
+  <% end %>
+
   <div class="actions">
-    <%= f.submit "Create Event" %>
+    <%= f.submit %>
   </div>
 <% end %>

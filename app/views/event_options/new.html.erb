@@ -1,5 +1,5 @@
 <h1>New Event Option</h1>
 
-<%= render 'form', event_option: @event_option %>
+<%= render 'form', event_option: @event_option, event: @event %>
 
-<%= link_to 'Back', event_options_path %>
+<%= link_to 'Back', edit_event_path(@event) %>
