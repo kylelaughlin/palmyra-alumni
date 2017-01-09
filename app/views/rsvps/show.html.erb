@@ -14,10 +14,17 @@
 
 <h3>Total Cost: <%= money(@rsvp.total_cost)%></h3>
 
-<%= link_to "Pay with PayPal", @paypal_url %>
-<p>If paying by check or cash please send payment to the following:<br/>
-  <%= simple_format(@event.payment_instructions) %>
-</p>
+<% if @rsvp.payment_status == "Not Paid" %>
+  <%= link_to "Pay with PayPal", @paypal_url %>
+  <p>If paying by check or cash please send payment to the following:<br/>
+    <%= simple_format(@event.payment_instructions) %>
+  </p>
+<% else %>
+  <p>Payment Status: <strong>Paid</strong></p>
+  <p>If you need to make changes to your RSVP please send the needed changes to __________.</p>
+<% end %>
 
-<%= link_to 'Edit', edit_event_rsvp_path(@event, @rsvp) %> |
+<% if @rsvp.payment_status == "Not Paid" || current_classmate.admin? %>
+  <%= link_to 'Edit', edit_event_rsvp_path(@event, @rsvp) %> |
+<% end %>
 <%= link_to 'Back', event_rsvps_path(@event) %>

@@ -42,6 +42,9 @@ class RsvpsController < ApplicationController
 
   def update
     if @rsvp.update(rsvp_params)
+      if rsvp_params[:paid_amount]
+        @rsvp.update(paid_amount: rsvp_params[:paid_amount].to_i * 100)
+      end
       redirect_to event_rsvp_path(@rsvp.event_id, @rsvp.id), notice: 'Rsvp was successfully updated.'
     else
       render :edit

@@ -57,12 +57,14 @@
       <div class="form-group">
         <h4>Viewable to Administrators only.</h4>
         <%= f.label :payment_status %>
-        <%= f.select(:payment_status, options_for_select(["Not Paid", "Paid", "Over Paid", "Extra Payment Due"], rsvp.payment_status)) %>
+        <%= f.select(:payment_status, options_for_select(["Not Paid", "Paid", "Extra Payment Due", "Over Paid"], rsvp.payment_status)) %>
       </div>
+
+      <p>Total Cost: <strong><%= money(rsvp.total_cost) %></strong></p>
 
       <div class="form-group">
         <%= f.label :paid_amount, "Amount Paid" %>
-        <%= f.number_field :paid_amount, value: @rsvp.paid_amount.nil? ? 0 : @rsvp.paid_amount/100, class: "form-control", step: 0.01 %>
+        <%= f.number_field :paid_amount, value: total_amount_paid(rsvp), class: "form-control", step: 0.01 %>
       </div>
       <p>If changes to an rsvp where made and a refund was made or the classmate made an additional payment please input the total amount the classmate paid here.</p>
     </div>

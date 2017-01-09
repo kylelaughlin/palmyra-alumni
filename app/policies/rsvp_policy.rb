@@ -17,11 +17,11 @@ class RsvpPolicy < ApplicationPolicy
   end
 
   def edit?
-    @user.id == resource.classmate_id || @user.admin?
+    (@user.id == resource.classmate_id && @resource.payment_status != "Paid") || @user.admin?
   end
 
   def update?
-    @user.id == resource.classmate_id || @user.admin?
+    (@user.id == resource.classmate_id && @resource.payment_status != "Paid") || @user.admin?
   end
 
   def destroy?
