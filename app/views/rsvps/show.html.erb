@@ -21,10 +21,10 @@
   </p>
 <% else %>
   <p>Payment Status: <strong>Paid</strong></p>
-  <p>If you need to make changes to your RSVP please send the needed changes to __________.</p>
+  <p>If you need to make changes to your RSVP please send the needed changes to <%= mail_to @event.contact_email %>.</p>
 <% end %>
 
 <% if @rsvp.payment_status == "Not Paid" || current_classmate.admin? %>
   <%= link_to 'Edit', edit_event_rsvp_path(@event, @rsvp) %> |
 <% end %>
-<%= link_to 'Back', event_rsvps_path(@event) %>
+<%= link_to 'Back', event_path(@event) %>
