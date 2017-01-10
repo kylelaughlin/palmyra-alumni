@@ -28,7 +28,8 @@
   Graduate.create(graduate)
 end
 
-[{first_name: "Brandon", last_name: "Holt", class_year: "2016", phone: "555-555-5555", address_line_one: "123 East St", city: "Lincoln", state: "NE", is_private: false, email: "brandon@email.com", password: "palmyra", password_confirmation: "palmyra"},
+[{first_name: "Administrator", last_name: "", class_year: "0000", phone: "555-5555", address_line_one: "--", city: "--", state: "--", is_private: true, email: "--@--", password: "123qweasd", password_confirmation: "123qweasd"},
+  {first_name: "Brandon", last_name: "Holt", class_year: "2016", phone: "555-555-5555", address_line_one: "123 East St", city: "Lincoln", state: "NE", is_private: false, email: "brandon@email.com", password: "palmyra", password_confirmation: "palmyra"},
   {first_name: "Ashley", last_name: "Less", class_year: "2016", phone: "555-555-5555", address_line_one: "123 West St", city: "Lincoln", state: "NE", is_private: false, email: "ashley@email.com", password: "palmyra", password_confirmation: "palmyra"},
   {first_name: "Amber", last_name: "Sweeny", class_year: "2016", phone: "555-555-5555", address_line_one: "123 East St", city: "Omaha", state: "NE", is_private: true, email: "Amber@email.com", password: "palmyra", password_confirmation: "palmyra"},
   {first_name: "Jess", last_name: "Everton", class_year: "2016", phone: "555-555-5555", address_line_one: "456 Overton St", city: "Lincoln", state: "NE", is_private: true, email: "jess@email.com", password: "palmyra", password_confirmation: "palmyra"},

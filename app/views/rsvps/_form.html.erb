@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <p>Check this box if you are an administrator creating an rsvp for another classmate who is not a user of the website. If the user has already paid please fill out the section below to apply the appropriate payment status.</p>
+  <%= check_box_tag :administrator %>
+  <%= label_tag :administrator, "Administrator" %>
+
   <%= f.hidden_field :classmate_id, value: "#{current_classmate.id}" %>
   <%= f.hidden_field :event_id, value: "#{event.id}" %>
 

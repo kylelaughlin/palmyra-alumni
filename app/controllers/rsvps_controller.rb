@@ -32,6 +32,9 @@ class RsvpsController < ApplicationController
 
   def create
     @rsvp = Rsvp.new(rsvp_params)
+    if params[:administrator] == "1"
+      @rsvp.classmate_id = 1
+    end
     @event = Event.find(params[:event_id])
     if @rsvp.save
       redirect_to event_rsvp_path(@event, @rsvp), notice: 'Rsvp was successfully created.'

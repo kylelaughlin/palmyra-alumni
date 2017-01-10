@@ -5,7 +5,7 @@ class RsvpPolicy < ApplicationPolicy
   end
 
   def new?
-    @user && @user.rsvps.where(event_id: record.event_id).empty?
+    @user && (@user.rsvps.where(event_id: record.event_id).empty? || @user.admin?)
   end
 
   def create?
