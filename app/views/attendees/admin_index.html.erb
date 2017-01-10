@@ -1,0 +1,22 @@
+<h1>Attendees for <%= @event.name %> </h1>
+
+<table class="table" id="attendees-table">
+  <thead>
+    <th>Name</th>
+    <th>Food Option</th>
+    <th>Classmate</th>
+    <th>Paid?</th>
+    <th>View RSVP</th>
+  </thead>
+  <tbody>
+    <% @attendees.each do |a| %>
+      <tr>
+        <td><%= a.name %></td>
+        <td><%= a.event_option.name %></td>
+        <td><%= a.rsvp.classmate.full_name %></td>
+        <td><%= a.rsvp.payment_status %></td>
+        <td><%= link_to "RSVP", event_rsvp_path(a.rsvp.event_id, a.rsvp.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

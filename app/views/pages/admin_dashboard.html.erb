@@ -9,6 +9,7 @@
     <th>Event</th>
     <th>Date</th>
     <th>View RSVPS</th>
+    <th>View Attendees</th>
   </thead>
   <tbody>
     <% @events.each do |event| %>
@@ -16,6 +17,7 @@
         <td><%= link_to event.name, event_path(event) %></td>
         <td><%= event.date.strftime("%m/%d/%y") %></td>
         <td><%= link_to "See RSVPs", admin_rsvps_path(event.id) %></td>
+        <td><%= link_to "See Attendees", admin_attendees_path(event.id) %></td>
       </tr>
     <% end %>
   </tbody>

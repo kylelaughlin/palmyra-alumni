@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/admin_dashboard", to: 'pages#admin_dashboard', as: "admin_dashboard"
   get "/admin_classmates", to: 'classmates#admin_index', as: "admin_classmates"
   get "/events/:event_id/admin_rsvps", to: 'rsvps#admin_index', as: "admin_rsvps"
+  get "/events/:event_id/admin_attendees", to: 'attendees#admin_index', as: "admin_attendees"
 
   post "/images", to: "images#create", as: "new_image"
 

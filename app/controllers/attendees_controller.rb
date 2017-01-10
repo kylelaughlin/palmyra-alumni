@@ -5,6 +5,11 @@ class AttendeesController < ApplicationController
     @attendees = Attendee.all
   end
 
+  def admin_index
+    @event = Event.find(params[:event_id])
+    @attendees = Attendee.joins(:rsvp).where(rsvps: {event_id: @event.id})
+  end
+
   def show
   end
 
