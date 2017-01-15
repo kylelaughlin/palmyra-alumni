@@ -27,7 +27,7 @@
 
 html,body {
   height:100%;
-    background:center no-repeat linear-gradient(0deg,rgba(0,33,63,0.5),rgba(0,33,63,0.5)), fixed url('sepia.jpg');
+    background:center linear-gradient(0deg,rgba(0,33,63,0.5),rgba(0,33,63,0.5)), fixed url('sepia.jpg');
     background-size: cover;
     color:#444;
     font-family: 'Lato', sans-serif;
@@ -260,13 +260,13 @@ footer .nav>li>a:hover {
 }
 
 #posts {
-  // float: left;
+  float: left;
   // background-color: rgba(255,255,255,0.7);
   margin-right: 1vh;
 }
 
 #events {
-  // float: right;
+  float: right;
   // background-color: rgba(255,255,255,0.7);
 }
 
