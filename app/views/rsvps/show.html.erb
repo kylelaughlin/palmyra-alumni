@@ -1,23 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="rsvp-show">
+	<p id="notice"><%= notice %></p>
 
-<h1>RSVP for: <%= @event.name %></h1>
-<h4>Date: <%= @event.date.strftime("%m/%d/%y")%></h4>
+	<h2>RSVP for: <%= @event.name %></h3>
+	<h4>Date: <%= @event.date.strftime("%m/%d/%y")%></h4>
 
-<h2>Attending:</h2>
-<% @rsvp.attendees.each do |a| %>
-  <div>
-    <p><%= a.name %></p>
-    <p>Selected Option: <%= a.event_option.name%></p>
-    <p>Cost: <%= money(a.event_option.price) %></p>
-  </div>
-<% end %>
+	<h2>Attending:</h2>
+	<% @rsvp.attendees.each do |a| %>
+	  <div>
+	    <p><%= a.name %></p>
+	    <p>Selected Option: <%= a.event_option.name%></p>
+	    <p>Cost: <%= money(a.event_option.price) %></p>
+	  </div>
+	<% end %>
 
-<h3>Total Cost: <%= money(@rsvp.total_cost)%></h3>
+	<h3>Total Cost: <%= money(@rsvp.total_cost)%></h3>
 
-<%= link_to "Pay with PayPal", @paypal_url %>
-<p>If paying by check or cash please send payment to the following:<br/>
-  <%= simple_format(@event.payment_instructions) %>
-</p>
 
-<%= link_to 'Edit', edit_event_rsvp_path(@event, @rsvp) %> |
-<%= link_to 'Back', event_rsvps_path(@event) %>
+	<%= link_to image_tag("https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-small.png"), @paypal_url %>
+	
+	<p>If paying by check or cash please send payment to the following:<br/>
+	  <%= simple_format(@event.payment_instructions) %>
+	</p>
+
+	<button class="btn btn-default"><%= link_to 'Edit', edit_event_rsvp_path(@event, @rsvp) %></button><br>
+	<%= link_to 'Back', event_rsvps_path(@event) %>
+</div>
