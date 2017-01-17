@@ -33,18 +33,6 @@
     <% end %>
   </div>
 
-<<<<<<< HEAD
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
-
-<% if current_classmate.admin? %>
-  <h2>Administrator Section</h2>
-
-  <p><%= link_to "Click HERE", new_event_rsvp_path(@event) %> to RSVP for a classmate that is not a user of the website.</p>
-
-<% end %>
-=======
   <button class="btn btn-default"><%= link_to 'Edit Event', edit_event_path(@event) %></button><br>
   <%= link_to 'Back', events_path %>
 </div>
->>>>>>> style
