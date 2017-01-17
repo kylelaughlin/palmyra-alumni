@@ -3,32 +3,6 @@
   <meta name="turbolinks-cache-control" content="no-cache">
 <% end %>
 
-<table class="table" id="admin-classmates-table">
-  <thead>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Address 1</th>
-    <th>Address 2</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Phone</th>
-    <th>Class</th>
-  </thead>
-  <tbody>
-    <% @classmates.each do |c| %>
-      <tr>
-        <td><%= link_to c.full_name, classmate_path(c) %></td>
-        <td><%= c.email %></td>
-        <td><%= c.address_line_one %></td>
-        <td><%= c.address_line_two %></td>
-        <td><%= c.city %></td>
-        <td><%= c.state %></td>
-        <td><%= c.phone %></td>
-        <td><%= c.class_year %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 <div class="admin-index">  
   <table class="table" id="admin-classmates-table">
     <thead>
