@@ -1,18 +1,18 @@
 <%= form_for @post do |f| %>
   <div class="form-group">
     <%= f.label :title, "Post Title" %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
+    <%= f.label :content, "Content" %>
+    <%= f.text_area :content, class: "form-control" %>
     <!-- <%= f.hidden_field :content, value: @post.content %> -->
     <!-- <trix-editor input="post_content" class="trix-content"></trix-editor> -->
   </div>
 
   <%= f.hidden_field :classmate_id, value: current_classmate.id %>
 
-  <%= f.submit %>
+  <%= f.submit class: "btn btn-default"  %>
 
 <% end %>

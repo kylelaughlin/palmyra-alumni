@@ -1,29 +1,29 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
+<nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
+  <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand text-danger" href="/">Palmyra Bennet Alumni</a>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
+    <div class="navbar-collapse collapse" id="navbar-collapsible">
+      <ul class="nav navbar-nav navbar-left">
         <li><%= link_to "Classmates", classmates_path %></li>
         <li><%= link_to "Events", events_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
         <li><%= link_to current_classmate.full_name, edit_classmate_registration_path(current_classmate) %></li>
-        <% if current_classmate %>
-          <li><%= link_to "Logout", destroy_classmate_session_path, method: :delete %></li>
-        <% end %>
+        
         <% if current_classmate.admin? %>
           <li><%= link_to "Admin", admin_dashboard_path %>
         <% end %>
+        <% if current_classmate %>
+          <li><%= link_to "Logout", destroy_classmate_session_path, method: :delete %></li>
+        <% end %>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>

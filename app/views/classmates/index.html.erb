@@ -1,19 +1,19 @@
+<div class="classmates-index">
+  <% content_for :head do %>
+    <meta name="turbolinks-cache-control" content="no-cache">
+  <% end %>
 
-<% content_for :head do %>
-  <meta name="turbolinks-cache-control" content="no-cache">
-<% end %>
+  <div class="row">
+    <div class="col-md-4">
+      <p>Select a graduation year to view<p>
+      <%= label_tag :class_year, "Graduation Year" %>
+      <%= select_tag(:class_year, options_for_select(class_years), include_blank: true, class: "form-control", id: "class-selector") %>
+    </div>
+    <div class="col-md-8">
+      <div id="classmate-lists">
 
-<div class="row">
-  <div class="col-md-4">
-    <p>Select a graduation year to view<p>
-    <%= label_tag :class_year, "Graduation Year" %>
-    <%= select_tag(:class_year, options_for_select(class_years), include_blank: true, class: "form-control", id: "class-selector") %>
-  </div>
-  <div class="col-md-8">
-    <div id="classmate-lists">
+        <%= render "classmates_list", class_year: @class_year, classmates: @classmates, graduates: @graduates %>
 
-      <%= render "classmates_list", class_year: @class_year, classmates: @classmates, graduates: @graduates %>
-
+      </div>
     </div>
   </div>
-</div>
