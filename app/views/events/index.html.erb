@@ -21,9 +21,22 @@
           <td><%= event.date %></td>
           <td><%= event.content %></td>
           <div class="btn-group" role="group" aria-label="...">
-            <td><button type="button" class="btn btn-default"><%= link_to 'Show', event %></button></td>
-            <td><button type="button" class="btn btn-default"><%= link_to 'Edit', edit_event_path(event) %></button></td>
-            <td><button type="button" class="btn btn-default"><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+            <td>
+              <% if current_classmate.admin? %>  
+                <button type="button" class="btn btn-default"><%= link_to 'Show', event %></button>
+              <% end %>
+              <button type="button" class="btn btn-default"><%= link_to 'More Details', event %></button>
+            </td>
+            <td>
+              <% if current_classmate.admin? %>
+                <button type="button" class="btn btn-default"><%= link_to 'Edit', edit_event_path(event) %></button>
+              <% end %>  
+            </td>
+            <td>
+              <% if current_classmate.admin? %>
+                <button type="button" class="btn btn-default"><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+              <% end %>
+            </td>
           </div>  
         </tr>
       <% end %>
@@ -34,9 +47,9 @@
 
 
 <% if current_classmate.admin? %>
-  <%= link_to 'New Event', new_event_path %>
+  <button class="btn btn-default"><%= link_to 'New Event', new_event_path %></button>
 <% end %>
-
-  <button type="button" class="btn btn-default"><%= link_to 'Create New Event', new_event_path %></button>
+<!-- 
+  <button type="button" class="btn btn-default"><%= link_to 'Create New Event', new_event_path %></button> -->
 </div>
 
