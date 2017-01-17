@@ -1,9 +1,10 @@
-
+<div class="show-post">
 
   <h3><%= @post.title %></h3>
   <h5>By: <%= @post.classmate_full_name %> <%= @post.created_at.strftime("%m/%d/%y") %></h5>
   <div><%= simple_format(@post.content) %></div>
   <% if current_classmate.id == @post.classmate_id || current_classmate.admin? %>
-    <%=link_to "Edit Post", edit_post_path(@post) %>
+    <button class="btn btn-default"><%=link_to "Edit Post", edit_post_path(@post) %></button>
   <% end %>
-  <%= link_to "Back", root_path %>
+  <button class="btn btn-default"><%= link_to "Back", root_path %></button>
+</div>

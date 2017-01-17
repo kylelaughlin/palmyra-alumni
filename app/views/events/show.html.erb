@@ -1,36 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="event-show">
+  <p id="notice"><%= notice %></p>
 
-<h3>
-  <%= @event.name %>
-</h3>
+  <h3>
+    <%= @event.name %>
+  </h3>
 
-<p>
-  <strong>Date: </strong><%= @event.date %><br/>
-  <%= @event.time %>
-</p>
+  <p>
+    <strong>Date: </strong><%= @event.date %><br/>
+    <%= @event.time %>
+  </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= simple_format(@event.content) %>
-</p>
+  <p>
+    <strong>Content:</strong>
+    <%= simple_format(@event.content) %>
+  </p>
 
-<p>RSVPs must be submitted by <%= @event.rsvp_by.strftime("%m/%d/%y") %></p>
+  <p>RSVPs must be submitted by <%= @event.rsvp_by.strftime("%m/%d/%y") %></p>
 
-<h4>Food Options</h4>
-<% @event.event_options.each do |option| %>
-  <div>
-    <p>Description: <%= option.name %></p>
-    <p>Price: <%= money(option.price) %></p>
-  </div>
-<% end %>
-
-<div>
-  <% if current_classmate.rsvps.where(event_id: @event.id).empty? %>
-    <%= link_to 'RSVP', new_event_rsvp_path(@event) %>
-  <% else %>
-    <%= link_to 'View RSVP', event_rsvp_path(@event, current_classmate.rsvps.where(event_id: @event.id)[0]) %>
+  <h4>Food Options</h4>
+  <% @event.event_options.each do |option| %>
+    <div>
+      <p>Description: <%= option.name %></p>
+      <p>Price: <%= money(option.price) %></p>
+    </div>
   <% end %>
-</div>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+  <div>
+    <% if current_classmate.rsvps.where(event_id: @event.id).empty? %>
+      <button class="btn btn-default"><%= link_to 'RSVP', new_event_rsvp_path(@event) %></button>
+    <% else %>
+      <button class="btn btn-default"><%= link_to 'View RSVP', event_rsvp_path(@event, current_classmate.rsvps.where(event_id: @event.id)[0]) %></button>
+    <% end %>
+  </div>
+
+  <button class="btn btn-default"><%= link_to 'Edit Event', edit_event_path(@event) %></button><br>
+  <%= link_to 'Back', events_path %>
+</div>

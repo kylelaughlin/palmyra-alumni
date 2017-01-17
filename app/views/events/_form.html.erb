@@ -68,9 +68,9 @@
       <% end %>
     </div>
   <% end %>
-  <%= link_to "Add Another Event Option", "javascript:void(0)", id: "event-option-button" %>
+  <button class="btn btn-default"><%= link_to "Add Another Event Option", "javascript:void(0)", id: "event-option-button" %></button>
   <br/>
   <div class="actions">
-    <%= f.submit "Create Event" %>
+    <%= f.submit "Create Event", class: 'btn btn-default' %>
   </div>
 <% end %>

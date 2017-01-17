@@ -1,16 +1,18 @@
-<h3><%= @classmate.full_name %></h3>
+<div class="classmate-show">
+	<h3><%= @classmate.full_name %></h3>
 
-<p>
-  <strong>Email: </strong><%= @classmate.email %><br/>
-  <strong>Phone: </strong><%= @classmate.phone %><br/>
-  <strong>Class: </strong><%= @classmate.class_year %><br/><br/>
-  <%= @classmate.address_line_one %><br/>
-  <% if !@classmate.address_line_two.blank? %>
-    <%= @classmate.address_line_two %><br/>
-  <% end %>
-  <%= @classmate.city %>, <%= @classmate.state %> <%= @classmate.zip %>
-</p>
+	<p>
+	  <strong>Email: </strong><%= @classmate.email %><br/>
+	  <strong>Phone: </strong><%= @classmate.phone %><br/>
+	  <strong>Class: </strong><%= @classmate.class_year %><br/><br/>
+	  <%= @classmate.address_line_one %><br/>
+	  <% if !@classmate.address_line_two.blank? %>
+	    <%= @classmate.address_line_two %><br/>
+	  <% end %>
+	  <%= @classmate.city %>, <%= @classmate.state %> <%= @classmate.zip %>
+	</p>
 
-<% if current_classmate.id == @classmate.id || current_classmate.admin? %>
-  <%= link_to "Edit Classmate", edit_classmate_registration_path(@classmate) %>
-<% end %>
+	<% if current_classmate.id == @classmate.id || current_classmate.admin? %>
+	  <button class="btn btn-default"><%= link_to "Edit Classmate", edit_classmate_registration_path(@classmate) %></button>
+	<% end %>
+</div>
