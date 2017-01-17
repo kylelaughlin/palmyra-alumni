@@ -1,24 +1,25 @@
-<h1>Admin Dashboard</h1>
+<div class="admin-dash">
+  <h1>Admin Dashboard</h1>
 
-<%= link_to "All Classmates", admin_classmates_path %><br/>
-<%= link_to "Manage Graduate Lists", graduates_path %>
+  <button class="btn btn-default"><%= link_to "All Classmates", admin_classmates_path %></button><button class="btn btn-default"><%= link_to "Manage Graduate Lists", graduates_path %></button>
 
-<h4>Events</h4>
-<table>
-  <thead>
-    <th>Event</th>
-    <th>Date</th>
-    <th>View RSVPS</th>
-    <th>View Attendees</th>
-  </thead>
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= link_to event.name, event_path(event) %></td>
-        <td><%= event.date.strftime("%m/%d/%y") %></td>
-        <td><%= link_to "See RSVPs", admin_rsvps_path(event.id) %></td>
-        <td><%= link_to "See Attendees", admin_attendees_path(event.id) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <h4>Events</h4>
+  <table class="table">
+    <thead>
+      <th>Event</th>
+      <th>Date</th>
+      <th>View RSVPS</th>
+      <th>View Attendees</th>
+    </thead>
+    <tbody>
+      <% @events.each do |event| %>
+        <tr>
+          <td><%= link_to event.name, event_path(event) %></td>
+          <td><%= event.date.strftime("%m/%d/%y") %></td>
+          <td><button class="btn btn-default"><%= link_to "See RSVPs", admin_rsvps_path(event.id) %></button></td>
+          <td><button class="btn btn-default"><%= link_to "See Attendees", admin_attendees_path(event.id) %></button></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
