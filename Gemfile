@@ -27,8 +27,7 @@ gem "paperclip"
 gem "pundit"
 # trix for post editing. Read more: https://github.com/maclover7/trix
 gem 'trix'
-# pundit for user authorization. Read more: https://github.com/elabs/pundit
-gem "pundit"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
