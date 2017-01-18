@@ -1,6 +1,8 @@
-<h1>Editing Graduate</h1>
+<div class="grad-edit">
+	<h1>Editing Graduate</h1>
 
-<%= render 'form', graduate: @graduate %>
+	<%= render 'form', graduate: @graduate %>
 
-<%= link_to 'Show', @graduate %> |
-<%= link_to 'Back', graduates_path %>
+	<button class="btn btn-default"><%= link_to 'Show', @graduate %></button><br>
+	<%= link_to 'Back', graduates_path %>
+</div>

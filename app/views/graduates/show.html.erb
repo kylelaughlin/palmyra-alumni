@@ -1,14 +1,16 @@
-<p id="notice"><%= notice %></p>
+<div class="grad-show">
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @graduate.name %>
-</p>
+	<p>
+	  <strong>Name:</strong>
+	  <%= @graduate.name %>
+	</p>
 
-<p>
-  <strong>Class year:</strong>
-  <%= @graduate.class_year %>
-</p>
+	<p>
+	  <strong>Class year:</strong>
+	  <%= @graduate.class_year %>
+	</p>
 
-<%= link_to 'Edit', edit_graduate_path(@graduate) %> |
-<%= link_to 'Back', graduates_path %>
+	<button class="btn btn-default"><%= link_to 'Edit', edit_graduate_path(@graduate) %></button><br>
+	<%= link_to 'Back', graduates_path %>
+</div>
