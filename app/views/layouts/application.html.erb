@@ -31,9 +31,14 @@
     <% end %>
 
     <div class="container">
-      <%= render "layouts/flash_messages" %>
-
-      <%= yield %>
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="alerts col-sm-10">
+            <%= render "layouts/flash_messages" %>
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
+        <%= yield %>
     </div>
   </body>
 </html>
